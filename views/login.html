@@ -17,9 +17,7 @@
             <h5 class="card-title text-center">登入</h5>
             <form class="form-signin" action="login" method="post">
               <!-- 是否有錯誤訊息 -->
-              <% if (message != undefined){ %>
-              <div class="alert alert-danger"><%= message %></div>
-              <%}%>
+              <%- include('error.html') -%>
               <div class="form-label-group">
                 <input name="id" type="text" id="inputAccount" class="form-control" placeholder="帳號" required autofocus>
                 <label for="inputAccount">Account</label>

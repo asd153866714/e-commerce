@@ -12,7 +12,7 @@ const views = require('koa-views')
 var app = new Koa()
 const router = new KoaRouter()
 
-app.use(views('view', {map:{html:'ejs'}})) // 使用 ejs midleware(模板引擎) **要放在router啟動之前**
+app.use(views('views', {map:{html:'ejs'}})) // 使用 ejs midleware(模板引擎) **要放在router啟動之前**
 app.use(koaLogger())
 app.use(koaBody())
 
@@ -24,7 +24,7 @@ const CONFIG = {
 app.use(session(CONFIG, app)) // session 要放在 router 前面
 
 app.use(router.routes())
-app.use(serve(__dirname + '/view'));
+app.use(serve(__dirname + '/views'));
 
 
 router

@@ -17,9 +17,7 @@
             <h5 class="card-title text-center">註冊</h5>
             <form class="form-signin" action="signup" method="post">
               <!-- 是否有錯誤訊息 -->
-              <% if (message != undefined){ %>
-              <div class="alert alert-danger"><%= message %></div>
-              <%}%>
+              <%- include('error.html') -%>
               <div class="form-label-group">
                 <input name="email" type="email" id="inputEmail" class="form-control" placeholder="電子信箱" required autofocus>
                 <label for="inputEmail">E-mail</label>
