@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>個人資訊</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <%- include('header.html') -%>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="my-4"></h1>
+                <div class="list-group">
+                    <a href="/userDetails" class="btn btn-light" role="button">個人資訊</a>
+                    <a href="/address" class="btn btn-light" role="button">送貨地址</a>
+                    <a href="/order" class="btn btn-light" role="button">購買清單</a>
+                </div>
+            </div>
+
+            <div class="col-lg-9" id="content" style="margin: 5% 0;">
+            <form action="updateUser" method="POST">
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-2 col-form-label">帳號</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="id" readonly class="form-control-plaintext" id="inputName" value="<%= u_data[0].id %>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" name="email" class="form-control" id="inputEmail3" value="<%= u_data[0].email %>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">密碼</label>
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-link"><a href="/userDetails/password">設定新的密碼</a></button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPhone" class="col-sm-2 col-form-label">手機號碼</label>
+                    <div class="col-sm-10">
+                        <input type="tel" name="phone" class="form-control" id="inputPhone" placeholder="ex: 091234567" pattern="[0-9]{10}" value="<%= u_data[0].phone %>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">儲存</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <%- include('footer.html') -%>
+
+    <script>
+    </script>
+</body>
+
+</html>

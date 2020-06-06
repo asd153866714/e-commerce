@@ -1,0 +1,14 @@
+@media (max-width: 576px) {
+  .body {
+    max-width: 100%;
+  }
+  #amount {
+    max-width: 60px;
+  }
+}
+
+
+
+
+
+  
