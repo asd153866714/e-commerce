@@ -1,4 +1,4 @@
-# 簡易登入系統
+# 購物網站
 
 ## 使用說明
 啟動 mongodb 服務 ( 開啟mongod服務，用mongo查看資料庫 )
@@ -12,22 +12,26 @@
 
 2.登入 / 登出
 
-3.購物車
+3.不同商品的資訊頁面
+
+4.購物車
+
+5.購買清單
+
+6.會員資料頁面 
 
 ## 使用技術
 1.http 架構下的 koa 框架 (koa-session, koa-router, koa-logger, koa-static )
 
 2.ejs engine (koa-views)
 
-3.mongodb
+3.mongoDB
 
-4.儲存在瀏覽器的 localStorage 
+4.AJAX 通訊方式
 
 ## 檔案位置
-app.js 為後端主程式
+app.js 為主程式
 
-model.js 為 mongodb 資料庫控制程式
+/model : mongoDB 程式
 
-html 放在 view 資料夾
-
-css 放在 public 資料夾
+/views : 前端頁面檔案
