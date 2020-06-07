@@ -73,43 +73,19 @@
                 </div>
 
                 <div class="row">
-
-                    <div class="col-lg-4 col-md-6 mb-4" id="${}">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="img/ps4.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="/product?pid=0" id="Name-0">Ps4</a>
-                                </h4>
-                                <h10 id="Price-0">$100</h10>
+                    <% for(var i=0; i < p_data.length; i++){ %>
+                        <div class="col-lg-4 col-md-6 mb-4" id="${}">
+                            <div class="card h-100">
+                                <a href="/product?pid=<%= i %>"><img class="card-img-top" src="<%= p_data[i].img %>" alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="/product?pid=<%= i %>" id="Name-0"><%= p_data[i].name %></a>
+                                    </h4>
+                                    <h10 id="Price-0">$<%= p_data[i].price %></h10>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="img/xbox.jpg" height="100%" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="/product?pid=1" id="Name-1">Xbox</a>
-                                </h4>
-                                <h10 id="Price-1">$200</h10>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="img/Switch.jpg" height="100%" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="/product?pid=2" id="Name-3">Switch</a>
-                                </h4>
-                                <h10 id="Price-2">$300</h10>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    <% } %>                  
                 </div>
                 <!-- /.row -->
 

@@ -1,6 +1,6 @@
-const U = require('./model/user')
-const P = require('./model/pDetail')
-const C = require('./model/cart')
+const U = require('./models/user')
+const P = require('./models/pDetail')
+const C = require('./models/cart')
 const Koa = require('koa')
 var serve = require('koa-static')
 const session = require('koa-session')
@@ -33,8 +33,17 @@ router
     ctx.session.error_r = undefined
     
     let userid = ctx.session.userID
+    let data = await P.find()
+    let p_data = []
+
+    await data.forEach(element => {
+        p_data.push(element)
+    });
+    console.log(p_data)
+    console.log(p_data[0].name)
+
     await ctx.render('index',{ // render index.html
-        userid
+        userid, p_data
     })
 })
 
