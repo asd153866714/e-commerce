@@ -3,7 +3,7 @@ const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient
 const ObjectID = mongodb.ObjectID
 const url = 'mongodb://localhost:27017'
-const dbName = 'project'
+const dbName = 'Shop'
 var client, db, users
 
 U.open = async function () {
