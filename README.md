@@ -32,6 +32,8 @@
 ## 檔案位置
 app.js 為主程式
 
+/route : router 檔案
+
 /model : mongoDB 程式
 
 /views : 前端頁面檔案

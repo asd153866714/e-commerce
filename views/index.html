@@ -24,13 +24,13 @@
 <body>
 
     <!-- Navigation -->
-    <%- include('header.html') -%>
+    <%- include('partial/header.html') -%>
 
     <!-- Page Content -->
     <div class="container">
 
         <div class="row">
-
+            <!-- Side bar -->
             <div class="col-lg-3">
 
                 <h1 class="my-4"></h1>
@@ -41,8 +41,8 @@
                 </div>
 
             </div>
-            <!-- /.col-lg-3 -->
 
+            <!-- Product -->
             <div class="col-lg-9">
 
                 <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -74,31 +74,29 @@
 
                 <div class="row">
                     <% for(var i=0; i < p_data.length; i++){ %>
-                        <div class="col-lg-4 col-md-6 mb-4" id="${}">
-                            <div class="card h-100">
-                                <a href="/product?pid=<%= i %>"><img class="card-img-top" src="<%= p_data[i].img %>" alt=""></a>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="/product?pid=<%= i %>" id="Name-0"><%= p_data[i].name %></a>
-                                    </h4>
-                                    <h10 id="Price-0">$<%= p_data[i].price %></h10>
-                                </div>
+                    <div class="col-lg-4 col-md-6 mb-4" id="${}">
+                        <div class="card h-100">
+                            <a href="/product?pid=<%= i %>"><img class="card-img-top" src="<%= p_data[i].img %>"
+                                    alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="/product?pid=<%= i %>" id="Name-0"><%= p_data[i].name %></a>
+                                </h4>
+                                <h10 id="Price-0">$<%= p_data[i].price %></h10>
                             </div>
                         </div>
-                    <% } %>                  
+                    </div>
+                    <% } %>
                 </div>
-                <!-- /.row -->
 
             </div>
-            <!-- /.col-lg-9 -->
 
         </div>
-        <!-- /.row -->
 
     </div>
 
     <!-- Footer -->
-    <%- include('footer.html') -%>
+    <%- include('partial/footer.html') -%>
 </body>
 
 </html>

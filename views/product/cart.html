@@ -20,14 +20,11 @@
 
 </head>
 
-<!-- 判斷登入狀態 -->
-<% if (userid == undefined){ %>
-<body onload="alert_login()">
-<% } else { %>
-<body onload="loadCart()" 
-<% } %> 
+
+<body>
+
 	<!-- Navigation -->
-	<%- include('header.html') -%>
+	<%- include('../partial/header.html') -%>
 	
 	<div class="container">
 		<% for(var i=0; i < c_data.length; i++){ %>
@@ -70,7 +67,7 @@
 						</div>
 						<div>
 							<button type="button" class="btn btn-success" style="width: 100%;"
-								onclick="clearCart()">結帳</button>
+								onclick="checkout()">結帳</button>
 						</div>
 					</div>
 				</div>
@@ -79,16 +76,15 @@
 	</div>
 
 	<script>
-
-		async function loadCart() {
+		window.onload = async () => {
 			Count()
 			amountChange()
+			porductDeleted()
 		}
 
-		// 偵測修改數量事件，和刪除商品事件
+		// 產品數量修改
 		async function amountChange() {
-
-			const am = document.querySelectorAll("input[type = 'number']").forEach(item => {
+			document.querySelectorAll("input[type = 'number']").forEach(item => {
 				item.addEventListener('change', async event => {
 					console.log(item.className, event.target.value)
 					Count()
@@ -100,9 +96,11 @@
 					}).then((response) => {return response.json})
 				})
 			})
+		}
 
-			// 偵測刪除商品事件
-			const rm = document.querySelectorAll("input[type = 'button']").forEach(item => {
+		// 產品刪除
+		async function porductDeleted() {
+			document.querySelectorAll("input[type = 'button']").forEach(item => {
 				item.addEventListener('click', async event => {
 					// 用 AJAX 傳回要刪除的商品給 Server
 					let remove = await fetch("removeCartItem", {
@@ -131,16 +129,8 @@
 			document.querySelector("#total").innerHTML = sum;
 		}
 
-		// 清除購物車
-		function clearCart() {
-			localStorage.clear()
-			location.href = '/'
-		}
-
-		// 登入提醒視窗
-		function alert_login() {
-			alert('請先登入')
-			location.href = '/login'
+		function checkout() {
+			window.location = "/"
 		}
 	</script>
 </body>

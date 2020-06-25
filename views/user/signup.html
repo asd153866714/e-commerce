@@ -5,7 +5,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
   integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/signin.css">
-<title>登入</title>
+<title>註冊</title>
 
 <body>
 
@@ -14,36 +14,61 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">登入</h5>
-            <form class="form-signin" action="login" method="post">
+            <h5 class="card-title text-center">註冊</h5>
+            <form class="form-signin" action="signup" method="post">
               <!-- 是否有錯誤訊息 -->
-              <%- include('error.html') -%>
+              <%- include('../error.html') -%>
+              <div class="form-label-group">
+                <input name="email" type="email" id="inputEmail" class="form-control" placeholder="電子信箱" required autofocus>
+                <label for="inputEmail">E-mail</label>
+              </div>
+
               <div class="form-label-group">
                 <input name="id" type="text" id="inputAccount" class="form-control" placeholder="帳號" required autofocus>
                 <label for="inputAccount">Account</label>
               </div>
   
               <div class="form-label-group">
-                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="密碼" required>
-                <label for="inputPassword">Password</label>
+                <input name="password" type="password" id="Password" class="form-control" placeholder="密碼" onchange="validatePassword()" required>
+                <label for="Password">Password</label>
+              </div>
+              <div class="form-label-group">
+                <!-- 刪除 name 屬性避免表單獨到第二個 password -->
+                <input type="password" id="confirm_Password" class="form-control" placeholder="密碼" onkeyup="validatePassword()" required>
+                <label for="confirm_Password">Confirm-Password</label>
               </div>
   
               <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
               <hr class="my-4">
-              沒有帳號嗎? <a href="signup" >註冊</a>
-              <a href="/" style="float:right">首頁</a>
               <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i
                   class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i
                   class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> -->
             </form>
+            <a href="/" style="text-align: right;">首頁</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+<script>
+
+  function validatePassword() {
+    let password = document.getElementById("Password")
+    let confirm_password = document.getElementById("confirm_Password");
+
+    if (password.value != confirm_password.value) {
+      console.log('test')
+      confirm_password.setCustomValidity("密碼不同");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }
+
+</script>
 </body>
