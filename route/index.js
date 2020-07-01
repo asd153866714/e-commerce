@@ -16,8 +16,6 @@ router
     await data.forEach(element => {
         p_data.push(element)
     });
-    console.log(p_data)
-    console.log(p_data[0].name)
 
     await ctx.render('index',{
         userid, p_data

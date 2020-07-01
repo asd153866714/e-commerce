@@ -27,7 +27,7 @@
 	<%- include('../partial/header.html') -%>
 	
 	<div class="container">
-		<% for(var i=0; i < c_data.length; i++){ %>
+		<% for(i in c_data){ %>
 		<div class="col-lg-12 card" id="<%= c_data[i].name %>">
 			<div class="card-body">
 				<div class="row">
