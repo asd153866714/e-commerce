@@ -78,7 +78,7 @@ exports.postCartRemoveProduct = async (ctx) => {
     console.log(p_data)
     await C.remove(userid, p_data.name)
     console.log("remove success")
-    ctx.response.body = "hello world"           // 要傳回 response 否則 Client 會 not found
+    ctx.response.body = "remove success"           // 要傳回 response 否則 Client 會 not found
 }
 
 exports.getOrders = async (ctx) => {

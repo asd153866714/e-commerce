@@ -14,6 +14,8 @@ const koaLogger = require('koa-logger')
 const koaBody = require('koa-body')
 const views = require('koa-views')
 
+const PORT = 3000
+
 app.use(views('views', { map: { html: 'ejs' } })) // 使用 ejs midleware(模板引擎) **要放在router啟動之前**
 app.use(koaLogger())
 app.use(koaBody())
@@ -33,8 +35,8 @@ async function main() {
   await U.open()
   await P.open()
   await C.open()
-  app.listen(3000, '0.0.0.0')
-  console.log("server run at http://localhost:3000")
+  app.listen(PORT, '0.0.0.0')
+  console.log(`server run at http://localhost:${PORT}`)
 }
 
 if (!module.parent) {

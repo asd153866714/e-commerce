@@ -43,7 +43,9 @@
 							value="<%= c_data[i].amount %>">
 					</div>
 					<div class="col-3 col-md-2  offset-3 offset-md-0">
-						<a href="#"><input type="button" class="<%= c_data[i].name %>" value="刪除"></a>
+						<a href="#">
+							<input type="button" class="<%= c_data[i].name %>" value="刪除">
+						</a>
 					</div>
 				</div>
 			</div>
@@ -76,43 +78,46 @@
 	</div>
 
 	<script>
-		window.onload = async () => {
+		window.onload = () => {
 			Count()
-			amountChange()
-			porductDeleted()
 		}
 
-		// 產品數量修改
-		async function amountChange() {
-			document.querySelectorAll("input[type = 'number']").forEach(item => {
-				item.addEventListener('change', async event => {
-					console.log(item.className, event.target.value)
-					Count()
+		let amountInputs = document.querySelectorAll("input[type = 'number']")
+		let deleteButtons = document.querySelectorAll("input[type = 'button']")
 
-					// 用 AJAX 傳回變動後的產品數量給 Server
-					let update = await fetch("updateProductAmount", {
-						method: 'POST',
-						body: JSON.stringify({ "name": item.className, "amount": event.target.value })
-					}).then((response) => {return response.json})
-				})
+		amountInputs.forEach( input => {
+			input.addEventListener('change', amountChanged)
+		})
+		deleteButtons.forEach( button => {
+			button.addEventListener('click', porductDeleted)
+		})
+
+		// 產品數量修改
+		async function amountChanged() {
+			console.log(this.className, this.value)
+			Count()
+
+			// 用 AJAX 傳回變動後的產品數量給 Server
+			let update = await fetch("updateProductAmount", {
+				method: 'POST',
+				body: JSON.stringify({ "name": this.className, "amount": this.value })
 			})
+			console.log(await update.text())
 		}
 
 		// 產品刪除
 		async function porductDeleted() {
-			document.querySelectorAll("input[type = 'button']").forEach(item => {
-				item.addEventListener('click', async event => {
-					// 用 AJAX 傳回要刪除的商品給 Server
-					let remove = await fetch("removeCartItem", {
-						method: 'POST',
-						body: JSON.stringify({"name": item.className})
-					}).then((response) => {return response.json})
-
-					// 清除該列內容的動態效果
-					document.getElementById(item.className).innerHTML = ' '
-					Count()
-				})
+			// AJAX 傳回要刪除的商品給 Server
+			let remove =  await fetch("removeCartItem", {
+				method: 'POST',
+				body: JSON.stringify({"name": this.className})
 			})
+			console.log(await remove.text())
+
+			// 清除該列內容的動態效果
+			let element = document.getElementById(this.className)
+			element.remove()
+			Count()
 		}
 
 		// 計算總金額
