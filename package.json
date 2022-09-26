@@ -34,7 +34,7 @@
     "markdown-it": "^10.0.0",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.14",
-    "pm2": "^4.4.0",
+    "pm2": "^5.2.0",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
